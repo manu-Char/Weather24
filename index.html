@@ -3,16 +3,25 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Weather24</title>
-  <link rel="stylesheet" href="style.css" />
+  <title>Weather24 - Live Weather App</title>
+  <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
-  <div class="container">
+  <header>
     <h1>🌤 Weather24</h1>
+    <p>Your real-time weather companion</p>
+  </header>
+
+  <main>
     <input type="text" id="city" placeholder="Enter city name" />
     <button onclick="getWeather()">Check Weather</button>
     <div id="result"></div>
-  </div>
+  </main>
+
+  <footer>
+    <p>© 2025 Weather24 | Created by <strong>Manmath Bharde</strong></p>
+  </footer>
+
   <script src="script.js"></script>
 </body>
 </html>
