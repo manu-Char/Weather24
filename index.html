@@ -13,9 +13,17 @@
   </header>
 
   <main>
-    <input type="text" id="city" placeholder="Enter city name" />
-    <button onclick="getWeather()">Check Weather</button>
+    <div class="search-box">
+      <input type="text" id="city" placeholder="Enter city name" />
+      <button onclick="getWeather()">Check Weather</button>
+    </div>
+    
     <div id="result"></div>
+
+    <section class="info">
+      <h2>📌 How It Works</h2>
+      <p>This app uses the OpenWeatherMap API to fetch live weather updates. Simply enter a city name, and get real-time temperature, humidity, wind speed, and conditions in an attractive interface.</p>
+    </section>
   </main>
 
   <footer>
