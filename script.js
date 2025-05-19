@@ -1,5 +1,18 @@
 const apiKey = "748699d13e9e7e19f331eef2a1d7fbea";
 
+function getLocalTime(dt, timezone) {
+  const localDate = new Date((dt + timezone) * 1000);
+
+  let hours = localDate.getUTCHours();
+  const minutes = localDate.getUTCMinutes().toString().padStart(2, '0');
+  const ampm = hours >= 12 ? 'PM' : 'AM';
+
+  hours = hours % 12;
+  hours = hours ? hours : 12; // 0 => 12
+
+  return `${hours}:${minutes} ${ampm}`;
+}
+
 async function getWeather() {
   const city = document.getElementById("city").value;
   const result = document.getElementById("result");
@@ -18,7 +31,7 @@ async function getWeather() {
     const data = await res.json();
 
     const iconUrl = `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
-    const weatherTime = new Date((data.dt + data.timezone) * 1000).toUTCString();
+    const localTime = getLocalTime(data.dt, data.timezone);
 
     result.innerHTML = `
       <h3>${data.name}, ${data.sys.country}</h3>
@@ -27,7 +40,7 @@ async function getWeather() {
       <p>🌡️ Temperature: ${data.main.temp}°C</p>
       <p>💧 Humidity: ${data.main.humidity}%</p>
       <p>🌬️ Wind: ${data.wind.speed} m/s</p>
-      <p>🕒 Local Time: ${weatherTime}</p>
+      <p>🕒 Local Time: ${localTime}</p>
     `;
   } catch (err) {
     result.innerHTML = `<p>❌ ${err.message}</p>`;
